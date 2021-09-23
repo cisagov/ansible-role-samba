@@ -10,11 +10,17 @@
       paths:
         - "{{ role_path }}/vars"
 
-- name: Install Samba client packages
+- name: Install Samba client
   ansible.builtin.package:
     name: "{{ client_packages }}"
 
-- name: Install Samba server packages
-  ansible.builtin.package:
-    name: "{{ server_packages }}"
+- name: Install and enable Samba server
+  block:
+    - name: Install Samba server packages
+      ansible.builtin.package:
+        name: "{{ server_packages }}"
+    - name: Enable Samba service
+      ansible.builtin.service:
+        enabled: yes
+        name: "{{ service_name }}"
   when: server

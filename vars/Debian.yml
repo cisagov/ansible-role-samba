@@ -6,3 +6,6 @@ client_packages:
 # The packages necessary for a Samba server
 server_packages:
   - samba
+
+# The name of the Samba service
+service_name: smbd
