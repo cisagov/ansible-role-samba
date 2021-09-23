@@ -3,3 +3,5 @@
   hosts: all
   roles:
     - role: ansible-role-samba
+      vars:
+        server: true

@@ -100,7 +100,7 @@ jobs:
       fail-fast: false
       matrix:
         scenario:
-          - default
+          - server
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
