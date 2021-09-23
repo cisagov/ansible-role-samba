@@ -1,0 +1,4 @@
+---
+# Whether or not the Samba server dependencies should also be
+# installed
+server: false

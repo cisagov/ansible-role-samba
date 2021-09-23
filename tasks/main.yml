@@ -1,2 +1,20 @@
 ---
-# tasks file for skeleton
+- name: Load var file with package names based on the OS type
+  ansible.builtin.include_vars: "{{ lookup('first_found', params) }}"
+  vars:
+    params:
+      files:
+        - "{{ ansible_distribution }}_{{ ansible_distribution_release }}.yml"
+        - "{{ ansible_distribution }}.yml"
+        - "{{ ansible_os_family }}.yml"
+      paths:
+        - "{{ role_path }}/vars"
+
+- name: Install Samba client packages
+  ansible.builtin.package:
+    name: "{{ client_packages }}"
+
+- name: Install Samba server packages
+  ansible.builtin.package:
+    name: "{{ server_packages }}"
+  when: server
