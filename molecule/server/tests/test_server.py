@@ -52,3 +52,12 @@ def test_service_enabled(host):
         assert False
 
     assert host.service(service_name).is_enabled
+
+
+def test_guest_user(host):
+    """Test that Samba guest user was created."""
+    user = host.user("smbguest")
+    assert user.exists
+    assert user.home == "/nonexistent"
+    assert user.shell == "/sbin/nologin"
+    assert user.gecos == "Samba guest account"

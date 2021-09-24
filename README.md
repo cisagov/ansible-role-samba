@@ -15,7 +15,9 @@ None.
 
 | Variable | Description | Default | Required |
 |----------|-------------|---------|----------|
-| server | Include Samba server dependencies. | `false` | No |
+| create_guest_user | Whether or not to create a Samba guest user.  Only applies if `server` is `true`. | `false` | No |
+| guest_user | The name of the Samba guest user. | `smbguest` | No |
+| server | Whether or not to include Samba server dependencies. | `false` | No |
 <!-- | required_variable | Describe its purpose. | n/a | Yes | -->
 
 ## Dependencies ##
