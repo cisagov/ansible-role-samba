@@ -33,7 +33,7 @@
             name: "{{ guest_user }}"
             shell: /sbin/nologin
             system: yes
-        - name: Configure samba to use the guest account
+        - name: Configure Samba to use the guest account
           community.general.ini_file:
             create: no
             option: guest account
