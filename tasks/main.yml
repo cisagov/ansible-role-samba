@@ -30,5 +30,6 @@
         home: /nonexistent
         name: "{{ guest_user }}"
         shell: /sbin/nologin
+        system: yes
       when: create_guest_user
   when: server
