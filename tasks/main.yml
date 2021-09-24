@@ -24,12 +24,21 @@
         enabled: yes
         name: "{{ service_name }}"
     - name: Create Samba guest user
-      ansible.builtin.user:
-        comment: Samba guest account
-        create_home: no
-        home: /nonexistent
-        name: "{{ guest_user }}"
-        shell: /sbin/nologin
-        system: yes
+      block:
+        - name: Create Samba guest user
+          ansible.builtin.user:
+            comment: Samba guest account
+            create_home: no
+            home: /nonexistent
+            name: "{{ guest_user }}"
+            shell: /sbin/nologin
+            system: yes
+        - name: Configure samba to use the guest account
+          community.general.ini_file:
+            create: no
+            option: guest account
+            path: /etc/samba/smb.conf
+            section: global
+            value: "{{ guest_user }}"
       when: create_guest_user
   when: server
