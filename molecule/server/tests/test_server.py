@@ -58,6 +58,6 @@ def test_guest_user(host):
     """Test that Samba guest user was created."""
     user = host.user("smbguest")
     assert user.exists
-    assert user.home == "/nonexistent"
+    assert user.home == "/dev/null"
     assert user.shell == "/sbin/nologin"
     assert user.gecos == "Samba guest account"

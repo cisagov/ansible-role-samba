@@ -29,7 +29,7 @@
           ansible.builtin.user:
             comment: Samba guest account
             create_home: no
-            home: /nonexistent
+            home: /dev/null
             name: "{{ guest_user }}"
             shell: /sbin/nologin
             system: yes
