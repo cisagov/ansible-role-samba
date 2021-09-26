@@ -10,7 +10,7 @@
       paths:
         - "{{ role_path }}/vars"
 
-- name: Install Samba client
+- name: Install Samba client packages
   ansible.builtin.package:
     name: "{{ client_packages }}"
 
