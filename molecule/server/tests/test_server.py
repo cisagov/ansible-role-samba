@@ -19,7 +19,7 @@ def test_packages(host):
         or host.system_info.distribution == "kali"
         or host.system_info.distribution == "ubuntu"
     ):
-        pkgs = ["samba", "samba-common"]
+        pkgs = ["cifs-utils", "samba", "samba-common"]
     elif (
         host.system_info.distribution == "fedora"
         or host.system_info.distribution == "amzn"
