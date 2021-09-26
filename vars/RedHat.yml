@@ -3,7 +3,7 @@
 client_packages:
   - cifs-utils
 
-# The packages necessary for a Samba server
+# The additional packages necessary for a Samba server
 server_packages:
   - samba
 
