@@ -2,7 +2,7 @@
 # The packages necessary for a Samba client
 client_packages:
   - cifs-utils
-  - samba-common
+  - smbclient
 
 # The additional packages necessary for a Samba server
 server_packages:
