@@ -27,12 +27,14 @@
       block:
         - name: Create Samba guest user
           ansible.builtin.user:
+            append: yes
             comment: Samba guest account
             create_home: no
+            groups: "{{ guest_user_groups | default(omit) }}"
             home: /dev/null
             name: "{{ guest_user }}"
             shell: /sbin/nologin
-            system: yes
+            uid: "{{ guest_user_uid | default(omit) }}"
         - name: Configure Samba to use the guest account
           community.general.ini_file:
             create: no
