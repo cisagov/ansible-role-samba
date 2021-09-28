@@ -14,16 +14,9 @@ testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
 def test_packages(host):
     """Ensure that all expected packages are installed."""
     pkgs = None
-    if (
-        host.system_info.distribution == "debian"
-        or host.system_info.distribution == "kali"
-        or host.system_info.distribution == "ubuntu"
-    ):
+    if host.system_info.distribution in ["debian", "kali", "ubuntu"]:
         pkgs = ["cifs-utils", "samba", "smbclient"]
-    elif (
-        host.system_info.distribution == "fedora"
-        or host.system_info.distribution == "amzn"
-    ):
+    elif host.system_info.distribution in ["amzn", "fedora"]:
         pkgs = ["cifs-utils", "samba", "samba-client"]
     else:
         # Should never get here
@@ -36,16 +29,9 @@ def test_packages(host):
 def test_service_enabled(host):
     """Test that Samba server is enabled."""
     service_name = None
-    if (
-        host.system_info.distribution == "debian"
-        or host.system_info.distribution == "kali"
-        or host.system_info.distribution == "ubuntu"
-    ):
+    if host.system_info.distribution in ["debian", "kali", "ubuntu"]:
         service_name = "smbd"
-    elif (
-        host.system_info.distribution == "fedora"
-        or host.system_info.distribution == "amzn"
-    ):
+    elif host.system_info.distribution in ["amzn", "fedora"]:
         service_name = "smb"
     else:
         # Should never get here

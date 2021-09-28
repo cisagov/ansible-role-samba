@@ -14,16 +14,9 @@ testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
 def test_packages(host):
     """Ensure that all expected packages are installed."""
     pkgs = None
-    if (
-        host.system_info.distribution == "debian"
-        or host.system_info.distribution == "kali"
-        or host.system_info.distribution == "ubuntu"
-    ):
+    if host.system_info.distribution in ["debian", "kali", "ubuntu"]:
         pkgs = ["cifs-utils", "smbclient"]
-    elif (
-        host.system_info.distribution == "fedora"
-        or host.system_info.distribution == "amzn"
-    ):
+    elif host.system_info.distribution in ["amzn", "fedora"]:
         pkgs = ["cifs-utils", "samba-client"]
     else:
         # Should never get here
