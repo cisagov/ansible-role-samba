@@ -5,7 +5,7 @@
 [![Language grade: Python](https://img.shields.io/lgtm/grade/python/g/cisagov/ansible-role-samba.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/cisagov/ansible-role-samba/context:python)
 
 This is an Ansible role that installs the dependencies necessary for
-Samba.
+[Samba](https://www.samba.org/).
 
 ## Requirements ##
 
