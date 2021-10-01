@@ -1,0 +1,8 @@
+---
+- name: Converge
+  hosts: all
+  roles:
+    - role: ansible-role-samba
+      vars:
+        create_guest_user: true
+        server: true

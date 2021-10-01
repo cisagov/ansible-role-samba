@@ -1,0 +1,11 @@
+---
+# Whether or not to create a Samba guest user.  Only applies if server
+# is true.
+create_guest_user: false
+
+# The name of the Samba guest user to be created
+guest_user: smbguest
+
+# Whether or not the Samba server dependencies should also be
+# installed
+server: false

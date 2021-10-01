@@ -1,10 +1,10 @@
 ---
 galaxy_info:
-  author: First Last
-  description: Skeleton Ansible role
+  author: Shane Frasier
+  description: Install packages for Samba support
   company: CISA Cyber Assessments
   galaxy_tags:
-    - skeleton
+    - samba
   license: CC0
   # With the release of version 2.10, Ansible finally correctly
   # identifies Kali Linux as being the Kali distribution of the Debian
@@ -12,6 +12,7 @@ galaxy_info:
   # Kali Linux, so it makes sense to force the installation of Ansible
   # 2.10 or newer.
   min_ansible_version: 2.10
+  namespace: cisagov
   platforms:
     - name: Amazon
       versions:
@@ -33,6 +34,6 @@ galaxy_info:
       versions:
         - bionic
         - focal
-  role_name: skeleton
+  role_name: samba
 
 dependencies: []

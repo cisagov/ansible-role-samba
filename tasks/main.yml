@@ -1,2 +1,46 @@
 ---
-# tasks file for skeleton
+- name: Load var file with package names based on the OS type
+  ansible.builtin.include_vars: "{{ lookup('first_found', params) }}"
+  vars:
+    params:
+      files:
+        - "{{ ansible_distribution }}_{{ ansible_distribution_release }}.yml"
+        - "{{ ansible_distribution }}.yml"
+        - "{{ ansible_os_family }}.yml"
+      paths:
+        - "{{ role_path }}/vars"
+
+- name: Install Samba client packages
+  ansible.builtin.package:
+    name: "{{ client_packages }}"
+
+- name: Install and enable Samba server
+  block:
+    - name: Install Samba server packages
+      ansible.builtin.package:
+        name: "{{ server_packages }}"
+    - name: Enable Samba service
+      ansible.builtin.service:
+        enabled: yes
+        name: "{{ service_name }}"
+    - name: Create Samba guest user
+      block:
+        - name: Create Samba guest user
+          ansible.builtin.user:
+            append: yes
+            comment: Samba guest account
+            create_home: no
+            groups: "{{ guest_user_groups | default(omit) }}"
+            home: /dev/null
+            name: "{{ guest_user }}"
+            shell: /sbin/nologin
+            uid: "{{ guest_user_uid | default(omit) }}"
+        - name: Configure Samba to use the guest account
+          community.general.ini_file:
+            create: no
+            option: guest account
+            path: /etc/samba/smb.conf
+            section: global
+            value: "{{ guest_user }}"
+      when: create_guest_user
+  when: server
