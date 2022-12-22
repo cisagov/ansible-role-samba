@@ -1,8 +1,7 @@
 # ansible-role-samba #
 
 [![GitHub Build Status](https://github.com/cisagov/ansible-role-samba/workflows/build/badge.svg)](https://github.com/cisagov/ansible-role-samba/actions)
-[![Total alerts](https://img.shields.io/lgtm/alerts/g/cisagov/ansible-role-samba.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/cisagov/ansible-role-samba/alerts/)
-[![Language grade: Python](https://img.shields.io/lgtm/grade/python/g/cisagov/ansible-role-samba.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/cisagov/ansible-role-samba/context:python)
+[![CodeQL](https://github.com/cisagov/ansible-role-samba/workflows/CodeQL/badge.svg)](https://github.com/cisagov/ansible-role-samba/actions/workflows/codeql-analysis.yml)
 
 This is an Ansible role that installs the dependencies necessary for
 [Samba](https://www.samba.org/).
@@ -34,8 +33,10 @@ Here's how to use it in a playbook:
 - hosts: all
   become: yes
   become_method: sudo
-  roles:
-    - samba
+  tasks:
+    - name: Install dependencies necessary for Samba
+      ansible.builtin.include_role:
+        name: samba
 ```
 
 ## Contributing ##
