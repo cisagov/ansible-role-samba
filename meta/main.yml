@@ -1,8 +1,9 @@
 ---
+dependencies: []
 galaxy_info:
   author: Shane Frasier
-  description: Install packages for Samba support
   company: CISA Cyber Assessments
+  description: Install packages for Samba support
   galaxy_tags:
     - samba
   license: CC0
@@ -28,7 +29,6 @@ galaxy_info:
         - bookworm
     - name: Fedora
       versions:
-        - "35"
         - "36"
         - "37"
     - name: Ubuntu
@@ -37,5 +37,3 @@ galaxy_info:
         - focal
         - jammy
   role_name: samba
-
-dependencies: []
