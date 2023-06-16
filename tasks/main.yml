@@ -15,6 +15,7 @@
     name: "{{ client_packages }}"
 
 - name: Install and enable Samba server
+  when: server
   block:
     - name: Install Samba server packages
       ansible.builtin.package:
@@ -24,6 +25,7 @@
         enabled: yes
         name: "{{ service_name }}"
     - name: Create Samba guest user
+      when: create_guest_user
       block:
         - name: Create Samba guest user
           ansible.builtin.user:
@@ -42,5 +44,3 @@
             path: /etc/samba/smb.conf
             section: global
             value: "{{ guest_user }}"
-      when: create_guest_user
-  when: server
