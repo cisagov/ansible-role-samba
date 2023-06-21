@@ -14,11 +14,11 @@ None.
 
 | Variable | Description | Default | Required |
 |----------|-------------|---------|----------|
-| create_guest_user | Whether or not to create a Samba guest user.  Only applies if `server` is `true`. | `false` | No |
-| guest_user | The name of the Samba guest user. | `smbguest` | No |
-| guest_user_groups | A list of additional groups to which the Samba guest user should belong. | [Omitted](https://docs.ansible.com/ansible/latest/user_guide/playbooks_filters.html#making-variables-optional) | No |
-| guest_user_uid | The UID to use for the Samba guest user. | [Omitted](https://docs.ansible.com/ansible/latest/user_guide/playbooks_filters.html#making-variables-optional) | No |
-| server | Whether or not to include Samba server dependencies. | `false` | No |
+| samba_create_guest_user | Whether or not to create a Samba guest user.  Only applies if `server` is `true`. | `false` | No |
+| samba_guest_user | The name of the Samba guest user. | `smbguest` | No |
+| samba_guest_user_groups | A list of additional groups to which the Samba guest user should belong. | [Omitted](https://docs.ansible.com/ansible/latest/user_guide/playbooks_filters.html#making-variables-optional) | No |
+| samba_guest_user_uid | The UID to use for the Samba guest user. | [Omitted](https://docs.ansible.com/ansible/latest/user_guide/playbooks_filters.html#making-variables-optional) | No |
+| samba_server | Whether or not to install Samba server dependencies. | `false` | No |
 <!-- | required_variable | Describe its purpose. | n/a | Yes | -->
 
 ## Dependencies ##
@@ -59,4 +59,4 @@ with this waiver of copyright interest.
 
 ## Author Information ##
 
-Shane Frasier - <jeremy.frasier@trio.dhs.gov>
+Shane Frasier - <jeremy.frasier@gwe.cisa.dhs.gov>

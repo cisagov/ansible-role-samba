@@ -22,15 +22,16 @@
     # ansible-lint doesn't like that we're using command here vice
     # using a module, but we have to since ansible.builtin.systemd
     # does not allow us the same functionality as systemctl
-    # is-system-running.  This is the reason for the noqa 303 at the
-    # end of the next line.
-    - name: Wait for systemd to complete initialization # noqa 303
+    # is-system-running.  This is the reason for the noqa at the end
+    # of the next line.
+    - name: Wait for systemd to complete initialization # noqa command-instead-of-module
       ansible.builtin.command: systemctl is-system-running
       register: systemctl_status
       until: "'running' in systemctl_status.stdout"
       retries: 30
       delay: 5
-      when: ansible_service_mgr == 'systemd'
+      when: ansible_service_mgr == "systemd"
+      changed_when: false
 
 - name: Import upgrade playbook
   ansible.builtin.import_playbook: upgrade.yml
