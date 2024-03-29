@@ -29,7 +29,9 @@
       block:
         - name: Create Samba guest user
           ansible.builtin.user:
-            append: true
+            # Only set to true if the variable is defined and
+            # non-empty.
+            append: "{{ samba_guest_user_groups is defined and samba_guest_user_groups }}"
             comment: Samba guest account
             create_home: false
             groups: "{{ samba_guest_user_groups | default(omit) }}"
