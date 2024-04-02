@@ -22,16 +22,18 @@
         name: "{{ server_packages }}"
     - name: Enable Samba service
       ansible.builtin.service:
-        enabled: yes
+        enabled: true
         name: "{{ service_name }}"
     - name: Create Samba guest user
       when: samba_create_guest_user
       block:
         - name: Create Samba guest user
           ansible.builtin.user:
-            append: yes
+            # Only set to true if the variable is defined and
+            # non-empty.
+            append: "{{ samba_guest_user_groups is defined and samba_guest_user_groups }}"
             comment: Samba guest account
-            create_home: no
+            create_home: false
             groups: "{{ samba_guest_user_groups | default(omit) }}"
             home: /dev/null
             name: "{{ samba_guest_user }}"
@@ -39,7 +41,7 @@
             uid: "{{ samba_guest_user_uid | default(omit) }}"
         - name: Configure Samba to use the guest account
           community.general.ini_file:
-            create: no
+            create: false
             option: guest account
             path: /etc/samba/smb.conf
             section: global

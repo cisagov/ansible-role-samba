@@ -20,7 +20,7 @@ def test_packages(host):
         pkgs = ["cifs-utils", "samba-client"]
     else:
         # Should never get here
-        assert False
+        assert False, f"Unknown distribution {host.system_info.distribution}"
 
     for pkg in pkgs:
         assert host.package(pkg).is_installed
