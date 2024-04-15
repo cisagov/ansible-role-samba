@@ -10,4 +10,9 @@
         name: ansible-role-samba
       vars:
         samba_create_guest_user: true
+        samba_guest_user: smbuser
+        samba_guest_user_uid: 2048
+        samba_guest_user_groups:
+          # This is just an already available group to use for testing.
+          - cdrom
         samba_server: true

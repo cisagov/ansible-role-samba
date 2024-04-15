@@ -31,7 +31,7 @@
           ansible.builtin.user:
             # Only set to true if the variable is defined and
             # non-empty.
-            append: "{{ samba_guest_user_groups is defined and samba_guest_user_groups }}"
+            append: "{{ samba_guest_user_groups is defined and samba_guest_user_groups | bool }}"
             comment: Samba guest account
             create_home: false
             groups: "{{ samba_guest_user_groups | default(omit) }}"
