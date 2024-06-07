@@ -1,3 +1,1 @@
----
-- name: Import upgrade playbook
-  ansible.builtin.import_playbook: upgrade.yml
+../server/prepare.yml
