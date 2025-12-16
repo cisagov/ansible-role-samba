@@ -1,6 +1,7 @@
 # ansible-role-samba #
 
 [![GitHub Build Status](https://github.com/cisagov/ansible-role-samba/workflows/build/badge.svg)](https://github.com/cisagov/ansible-role-samba/actions)
+[![License](https://img.shields.io/github/license/cisagov/ansible-role-samba)](https://spdx.org/licenses/)
 [![CodeQL](https://github.com/cisagov/ansible-role-samba/workflows/CodeQL/badge.svg)](https://github.com/cisagov/ansible-role-samba/actions/workflows/codeql-analysis.yml)
 
 This is an Ansible role that installs the dependencies necessary for
