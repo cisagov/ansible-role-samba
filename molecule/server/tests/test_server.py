@@ -20,7 +20,7 @@ def test_packages(host):
         pkgs = ["cifs-utils", "samba", "samba-client"]
     else:
         # Should never get here
-        assert False, f"Unknown distribution {host.system_info.distribution}"
+        raise AssertionError(f"Unknown distribution {host.system_info.distribution}")
 
     for pkg in pkgs:
         assert host.package(pkg).is_installed
@@ -35,7 +35,7 @@ def test_service_enabled(host):
         service_name = "smb"
     else:
         # Should never get here
-        assert False, f"Unknown distribution {host.system_info.distribution}"
+        raise AssertionError(f"Unknown distribution {host.system_info.distribution}")
 
     assert host.service(service_name).is_enabled
 
