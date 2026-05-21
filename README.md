@@ -20,7 +20,6 @@ None.
 | samba_guest_user_groups | A list of additional groups to which the Samba guest user should belong. | [Omitted](https://docs.ansible.com/ansible/latest/user_guide/playbooks_filters.html#making-variables-optional) | No |
 | samba_guest_user_uid | The UID to use for the Samba guest user. | [Omitted](https://docs.ansible.com/ansible/latest/user_guide/playbooks_filters.html#making-variables-optional) | No |
 | samba_server | Whether or not to install Samba server dependencies. | `false` | No |
-<!-- | required_variable | Describe its purpose. | n/a | Yes | -->
 
 ## Dependencies ##
 
